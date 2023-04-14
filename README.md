@@ -1,6 +1,6 @@
 # EngLang: An English-Based Programming Language
 
-EngLang is a programming language that uses English words and phrases to make programming more accessible to beginners and non-technical users. Rather than relying on complex syntax and arcane commands, EngLang allows users to express their ideas in natural language.
+![EngLang Logo](assets/logo.png) EngLang is a programming language that uses English words and phrases to make programming more accessible to beginners and non-technical users. Rather than relying on complex syntax and arcane commands, EngLang allows users to express their ideas in natural language.
 
 ## Principles
 
