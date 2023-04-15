@@ -31,14 +31,14 @@ jobs:
           mkdir -p dist
 
           # .zip the files with exclusion
-          zip -r dist/EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" "dist/*" ".vscode/*"
+          zip -r dist/EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" "dist/*" ".vscode/*" "example/*"
           
-      - name: Clone Fake Package.json
+      - name: Clone Auto Package.json
         run: |
-          # Download Fake Package.json
+          # Download Auto Package.json
           wget "https://raw.githubusercontent.com/MostlyWhat/.github/main/assets/auto/package.json"
 
-          # Download Fake Package-lock.json
+          # Download Auto Package-lock.json
           wget "https://raw.githubusercontent.com/MostlyWhat/.github/main/assets/auto/package-lock.json"
 
           dir
@@ -56,8 +56,6 @@ jobs:
 
       - name: Create Release
         run: |
-          echo "GitHub Token: $GITHUB_TOKEN"
-          echo "GH Token: $GH_TOKEN"
           npx auto shipit
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
