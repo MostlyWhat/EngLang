@@ -28,8 +28,12 @@ jobs:
           # Download auto-win.exe.gz
           wget "https://github.com/intuit/auto/releases/latest/download/auto-win.exe.gz"
 
+          dir
+
           # Extract auto-win.exe.gz
           7z auto-win.exe.gz
+
+          dir
 
           # Rename auto-win.exe to auto.exe
           mv "./auto-win.exe/auto-win.exe" "./auto.exe"
