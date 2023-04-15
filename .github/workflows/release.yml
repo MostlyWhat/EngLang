@@ -24,22 +24,10 @@ jobs:
           # .zip the files with exclusion
           zip -r dist/EngLang-Compiler.zip . -x README.md -x assets/\* -x .github/\* -x .git/\* -x .gitignore
 
-      - name: Get Latest Release
-        shell: powershell
-        run: |
-          $url = "https://api.github.com/repos/intuit/auto/releases/latest"
-          $response = Invoke-RestMethod $url
-          $LATEST_RELEASE = $response.tag_name
-          echo "::set-env name=LATEST_RELEASE::$LATEST_RELEASE"
-
       - name: Download Latest Release
         run: |
-          # Get latest release from environment variable
-          LATEST_RELEASE=$env:LATEST_RELEASE
-          echo "Latest release is $LATEST_RELEASE"
-
           # Download auto-win.exe.gz
-          wget "https://github.com/intuit/auto/releases/download/$LATEST_RELEASE/auto-win.exe.gz"
+          wget "https://github.com/intuit/auto/releases/latest/download//auto-win.exe.gz"
 
           # Extract auto-win.exe.gz
           tar -xf auto-win.exe.gz
