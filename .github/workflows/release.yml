@@ -12,6 +12,10 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
+      - name: Install zip
+        run: |
+          choco install zip -y
+
       - name: Zip Everything
         run: |
           # Create dist folder if it doesn't exist
