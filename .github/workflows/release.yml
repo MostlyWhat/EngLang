@@ -35,4 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # List Files and Folders
+          dir
+
+          # Create release
           ./auto.exe shipit
