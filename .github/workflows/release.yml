@@ -23,15 +23,14 @@ jobs:
           mkdir -p dist
 
           # .zip the files with exclusion
-          zip -r dist/EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore"
-
+          zip -r dist/EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" "dist/*" ".vscode/*"
       - name: Download Latest Release
         run: |
           # Download auto-win.exe.gz
           wget "https://github.com/intuit/auto/releases/latest/download/auto-win.exe.gz"
 
           # Extract auto-win.exe.gz
-          tar -xf auto-win.exe.gz
+          tar -xvzf auto-win.exe.gz
 
       - name: Create Release
         env:
