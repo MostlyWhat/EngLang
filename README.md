@@ -1,12 +1,18 @@
+<br/>
+
+> **Status - 🚧 Alpha - Work in Progress**
+>
+> You can use it, and feedback is more than welcome! Note that some breaking changes may still be introduced before reaching a stable version.
+
+<br/>
+
 # EngLang: An English-Based Programming Language
-<div style="display: flex; flex-direction: row;">
-  <div style="flex: 1;">
-    ![EngLang Logo](assets/logo.png)
-  </div>
-  <div style="flex: 1;">
-    **EngLang** is a programming language that uses English words and phrases to make programming more accessible to beginners and non-technical users. Rather than relying on complex syntax and arcane commands, EngLang allows users to express their ideas in natural language.
-  </div>
-</div>
+
+<a href="https://github.com/MostlyWhat/EngLang">
+  <img src="assets/logo.png" alt="Logo" width="200" height="200"></img>
+</a>
+
+**EngLang** is an experimental programming language that uses English words and phrases to make programming more accessible to beginners and non-technical users. Rather than relying on complex syntax and arcane commands, EngLang allows users to express their ideas in natural language.
 
 ## Principles
 
@@ -46,6 +52,70 @@ print("The sum of " + str(x) + " and " + str(y) + " is " + str(x + y))
 ```
 
 As you can see, the EngLang code has been translated into equivalent Python code that performs the same task.
+
+## Roadmap
+
+### Work in Progress (Alpha Version)
+
+Our program is currently in its alpha stage, which means that it's still in the early stages of development. We're actively working on improving the functionality and adding new features, but there may be bugs and limitations that we're still working on. We welcome any feedback and bug reports from our users to help us improve the program.
+
+### Milestone 1: Basic Functionality
+
+In this milestone, we focus on implementing basic functionality in EngLang to demonstrate the feasibility of the concept and provide a foundation for further development.
+
+#### Features
+
+- [ ] Arithmetic operations: Users can perform addition, subtraction, multiplication, and division using English words and phrases.
+- [ ] Control structures: EngLang supports control structures like if-else statements and loops.
+- [ ] Input/output: Users can display text and prompt for input using natural language syntax.
+
+#### Stretch Goals
+
+- [ ] Support for functions with parameters.
+- [ ] Additional built-in functions like string manipulation and math functions.
+
+### Milestone 2: Enhanced Functionality
+
+In this milestone, we aim to add more advanced features to EngLang to make it even more powerful and useful for a wider range of applications.
+
+#### Features
+
+- [ ] User-defined functions: Users can now define their own functions in EngLang to perform custom tasks.
+- [ ] Object-oriented programming (OOP): EngLang now supports OOP concepts like classes, objects, and inheritance.
+- [ ] File I/O: Users can now read and write files in EngLang using built-in functions.
+
+#### Stretch Goals
+
+- [ ] Add support for web development frameworks like Flask and Django.
+- [ ] Implement concurrency and parallelism features in EngLang.
+
+### Milestone 3: Improved Usability and Documentation
+
+In this milestone, we focus on improving the usability and documentation of EngLang to make it more accessible to beginners and non-technical users.
+
+#### Features
+
+- [ ] Improved error messages: EngLang now provides more informative error messages to help users identify and fix errors in their code.
+- [ ] Online documentation: We have created an online documentation website for EngLang, including tutorials and examples.
+- [ ] Interactive tutorial: A web-based interactive tutorial will be developed to help beginners learn EngLang step by step.
+
+#### Stretch Goals
+
+- [ ] Localization support: Add support for multiple languages in EngLang's compiler and documentation.
+- [ ] Community-driven documentation: Allow users to contribute to the EngLang documentation by submitting edits and suggestions.
+
+### Beyond
+
+Looking beyond Milestone 3, we have several ideas for the future of EngLang:
+
+- [ ] Integration with popular development tools like VS Code and PyCharm.
+- [ ] Continued development of EngLang's standard library to include more commonly used functions and modules.
+- [ ] Collaboration with educational institutions to incorporate EngLang into computer science curriculums.
+- [ ] Integration with machine learning and artificial intelligence libraries to enable users to create complex models using natural language syntax.
+
+## Disclaimer
+
+EngLang is still in development and is not yet ready for use. We are working hard to create a stable and reliable product, but please be aware that there may be bugs and other issues in the current version. Use at your own risk.
 
 ## Contributing
 
