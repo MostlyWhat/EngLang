@@ -3,8 +3,7 @@
     "git-tag",
     "all-contributors",
     "conventional-commits",
-    "first-time-contributor",
-    "magic-zero"
+    "first-time-contributor"
   ],
   "owner": "MostlyWhat",
   "repo": "EngLang",
