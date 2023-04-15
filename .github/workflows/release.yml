@@ -36,7 +36,7 @@ jobs:
           dir
 
           # Rename auto-win.exe to auto.exe
-          mv "./auto-win.exe/auto-win.exe" "./auto.exe"
+          mv "./auto-win.exe" "./auto.exe"
 
       - name: Create Release
         env:
