@@ -12,9 +12,10 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - name: Install zip
+      - name: Install Tools
         run: |
           choco install zip -y
+          choco install wget -y
 
       - name: Zip Everything
         run: |
@@ -22,12 +23,12 @@ jobs:
           mkdir -p dist
 
           # .zip the files with exclusion
-          zip -r dist/EngLang-Compiler.zip . -x README.md -x assets/\* -x .github/\* -x .git/\* -x .gitignore
+          zip -r dist/EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore"
 
       - name: Download Latest Release
         run: |
           # Download auto-win.exe.gz
-          wget "https://github.com/intuit/auto/releases/latest/download//auto-win.exe.gz"
+          wget "https://github.com/intuit/auto/releases/latest/download/auto-win.exe.gz"
 
           # Extract auto-win.exe.gz
           tar -xf auto-win.exe.gz
