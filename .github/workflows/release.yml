@@ -40,7 +40,7 @@ jobs:
 
       - name: Create Release
         env:
-          GH_TOKEN: ${{ env.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # List Files and Folders
           dir
