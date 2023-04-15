@@ -7,7 +7,7 @@
       "upload-assets",
       {
         "assets": [
-          ",/dist/EngLang-Compiler.zip"
+          "./dist/EngLang-Compiler.zip"
         ]
       }
     ]

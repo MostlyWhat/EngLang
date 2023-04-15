@@ -1,10 +1,14 @@
-name: Release 
+# Boilerplate Code for Releasing Using Auto by Intuit
+# Follow this beforehand: https://intuit.github.io/auto/docs/welcome/getting-started
+# Modify Parts to Suit Needs
 
-on: [push]
+name: Release EngLang Compiler
+
+on: [push, pull_request]
 
 jobs:
   release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
       - uses: actions/checkout@v2
@@ -12,10 +16,15 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
+      - name: Use Node.js 19.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 19.x
+          
       - name: Install Tools
         run: |
           choco install zip wget -y
-
+          
       - name: Zip Everything
         run: |
           # Create dist folder if it doesn't exist
@@ -23,27 +32,25 @@ jobs:
 
           # .zip the files with exclusion
           zip -r dist/EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" "dist/*" ".vscode/*"
-      - name: Download Latest Release
+          
+      - name: Clone Fake Package.json
         run: |
-          # Download auto-win.exe.gz
-          wget "https://github.com/intuit/auto/releases/latest/download/auto-win.exe.gz"
+          # Download Fake Package.json
+          wget "https://raw.githubusercontent.com/MostlyWhat/.github/main/assets/auto/package.json"
 
-          dir
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
 
-          # Extract auto-win.exe.gz
-          gzip -d auto-win.exe.gz
-
-          dir
-
-          # Rename auto-win.exe to auto.exe
-          mv "./auto-win.exe" "./auto.exe"
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: npm-deps-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-deps-${{ hashFiles('package-lock.json') }}
 
       - name: Create Release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # List Files and Folders
-          dir
-
-          # Create release
-          ./auto.exe shipit
+          npx auto shipit
