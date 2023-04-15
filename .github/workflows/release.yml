@@ -38,6 +38,9 @@ jobs:
           # Download Fake Package.json
           wget "https://raw.githubusercontent.com/MostlyWhat/.github/main/assets/auto/package.json"
 
+          # Download Fake Package-lock.json
+          wget "https://raw.githubusercontent.com/MostlyWhat/.github/main/assets/auto/package-lock.json"
+
           dir
 
       - name: Install dependencies
