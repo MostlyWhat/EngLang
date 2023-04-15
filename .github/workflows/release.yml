@@ -55,10 +55,10 @@ jobs:
             npm-deps-${{ hashFiles('package-lock.json') }}
 
       - name: Create Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           echo "GitHub Token: $GITHUB_TOKEN"
-          echo "GitHub Token: $GH_TOKEN"
+          echo "GH Token: $GH_TOKEN"
           npx auto shipit
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GH_TOKEN: '${{ secrets.GH_TOKEN }}'
