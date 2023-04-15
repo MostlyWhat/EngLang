@@ -297,7 +297,9 @@ def main():
     program_name = converter.get_program_name(englang_code)
     python_code = converter.convert(englang_code)
 
-    output_file = f"{program_name.lower()}.py"
+    output_folder = "./output/"
+    output_filename = f"{program_name.lower()}.py"
+    output_file = os.path.join(output_folder, output_filename)
 
     compiler_name = "MostlyWhat's EngLang Compiler"
     language = "EngLang"

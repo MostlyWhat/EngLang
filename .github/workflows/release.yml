@@ -1,0 +1,39 @@
+name: Release 
+
+on: [push]
+
+jobs:
+  release:
+    runs-on: windows-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+
+      - name: Zip Everything
+        run: |
+          # Create dist folder if it doesn't exist
+          mkdir -p dist
+
+          # .zip the files with exclusion
+          zip -r dist/EngLang-Compiler.zip . -x README.md -x assets/\* -x .github/\* -x .git/\* -x .gitignore
+
+      - name: Download Latest Release of Auto
+        run: |
+          # Get latest release
+          LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/intuit/auto/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
+          echo "Latest release is $LATEST_RELEASE"
+
+          # Download auto-win.exe.gz
+          wget "https://github.com/intuit/auto/releases/download/$LATEST_RELEASE/auto-win.exe.gz"
+
+          # Extract auto-win.exe.gz
+          tar -xf auto-win.exe.gz
+
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./auto.exe shipit

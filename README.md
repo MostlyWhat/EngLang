@@ -1,10 +1,6 @@
-<br/>
-
 > **Status - 🚧 Alpha - Work in Progress**
 >
 > You can use it, and feedback is more than welcome! Note that some breaking changes may still be introduced before reaching a stable version.
-
-<br/>
 
 # EngLang: An English-Based Programming Language
 

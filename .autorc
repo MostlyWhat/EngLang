@@ -1,0 +1,24 @@
+{
+  "plugins": [
+    "git-tag",
+    "all-contributors",
+    "first-time-contributor",
+    [
+      "upload-assets",
+      {
+        "assets": [
+          ",/dist/EngLang-Compiler.zip"
+        ]
+      }
+    ]
+  ],
+  "owner": "MostlyWhat",
+  "repo": "EngLang",
+  "name": "MostlyWhat",
+  "email": "admin@mostlywhat.systems",
+  "prereleaseBranches": [
+    "alpha",
+    "beta",
+    "rc"
+  ]
+}
