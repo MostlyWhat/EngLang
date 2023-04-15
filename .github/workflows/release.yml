@@ -39,8 +39,6 @@ jobs:
           mv "./auto-win.exe" "./auto.exe"
 
       - name: Create Release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # List Files and Folders
           dir
