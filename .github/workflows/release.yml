@@ -31,7 +31,7 @@ jobs:
           dir
 
           # Extract auto-win.exe.gz
-          tar -xvzf auto-win.exe.gz
+          gzip -d auto-win.exe.gz
 
           dir
 
