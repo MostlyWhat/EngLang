@@ -38,6 +38,8 @@ jobs:
           # Download Fake Package.json
           wget "https://raw.githubusercontent.com/MostlyWhat/.github/main/assets/auto/package.json"
 
+          dir
+
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
