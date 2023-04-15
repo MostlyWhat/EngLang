@@ -14,8 +14,7 @@ jobs:
 
       - name: Install Tools
         run: |
-          choco install zip -y
-          choco install wget -y
+          choco install zip gzip wget -y
 
       - name: Zip Everything
         run: |
@@ -30,7 +29,7 @@ jobs:
           wget "https://github.com/intuit/auto/releases/latest/download/auto-win.exe.gz"
 
           # Extract auto-win.exe.gz
-          tar -xvzf auto-win.exe.gz
+          gunzip auto-win.exe.gz
 
       - name: Create Release
         env:
