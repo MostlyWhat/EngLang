@@ -3,8 +3,6 @@ import platform
 import sys
 from datetime import datetime
 
-from alive_progress import alive_bar
-
 from compiler import Compiler
 
 
@@ -238,17 +236,14 @@ def interface():
 
     setup.info("Compiler is now compiling the file")
 
-    # Start a loading bar that will be updated as the compiler function progresses
-    with alive_bar(100, bar="blocks", spinner="dots_waves") as bar:
-        with open(name, "r") as f:
-            englang_code = f.read()
+    with open(name, "r") as f:
+        englang_code = f.read()
 
-        # Compile the file
-        compiled_code = compiler(englang_code)[1]
-        program_name = compiled_code[0]
+    # Compile the file
+    compiled_code = compiler(englang_code)[1]
+    program_name = compiled_code[0]
 
-        # Wait for the loading bar to finish
-        bar()
+    setup.pause()
 
     setup.splash()
 
@@ -259,15 +254,13 @@ def interface():
     output_file = os.path.join(output_folder, output_filename)
     current_date = datetime.now().strftime("%Y-%m-%d")
 
-    with alive_bar(100, bar="blocks", spinner="dots_waves") as bar:
-        with open(output_file, "w") as f:
-            f.write(
-                f"# Name: {program_name.title()}\n# Author: {author}\n# Language: {language}\n# Compiled: {current_date}\n# Compiler: {compiler_name}\n# License: {license}\n\n"
-            )
-            f.write(compiled_code)
+    with open(output_file, "w") as f:
+        f.write(
+            f"# Name: {program_name.title()}\n# Author: {author}\n# Language: {language}\n# Compiled: {current_date}\n# Compiler: {compiler_name}\n# License: {license}\n\n"
+        )
+        f.write(compiled_code)
 
-        # Wait for the loading bar to finish
-        bar()
+    setup.pause()
 
     setup.splash()
 
