@@ -279,6 +279,14 @@ class EngLangConverter:
         return code
 
 
+def Compiler(code):
+    converter = EngLangConverter()
+    program_name = converter.get_program_name(code)
+    python_code = converter.convert(code)
+
+    return program_name, python_code
+
+
 def main():
     """
     This function prompts the user for an EngLang file location, author name, and license name, converts
