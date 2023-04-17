@@ -31,7 +31,7 @@ jobs:
           mkdir -p dist
 
           # .zip the files with exclusion
-          zip -r dist/EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" "dist/*" ".vscode/*" "example/*"
+          zip -r EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" "dist/*" ".vscode/*" "example/*"
           
       - name: Clone Auto Package.json
         run: |
@@ -64,7 +64,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /dist/EngLang-Compiler.zip
+          file: EngLang-Compiler.zip
           asset_name: EngLangCompiler
           tag: ${{ github.ref }}
           overwrite: true
