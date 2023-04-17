@@ -55,7 +55,7 @@ class EngLangConverter:
         print("[ EngLang Compiler] Getting program name...")
         program_line = code.split("\n")[0]
         program_name = program_line.replace("PROGRAM", "").strip()
-        return program_name if program_name else None
+        return program_name or None
 
     @staticmethod
     def replace_import(code):
@@ -126,7 +126,7 @@ class EngLangConverter:
         print("[ EngLang Compiler ] Converting keywords...")
         code.replace("AND", "and").replace("OR", "or").replace("IN", "in")
         code.replace("NOT", "not").replace("TRUE", "True").replace("FALSE", "False")
-        return
+
 
     @staticmethod
     def convert_set_statements(code):
