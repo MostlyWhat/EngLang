@@ -27,11 +27,8 @@ jobs:
           
       - name: Zip Everything
         run: |
-          # Create dist folder if it doesn't exist
-          mkdir -p dist
-
           # .zip the files with exclusion
-          zip -r EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" "dist/*" ".vscode/*" "example/*"
+          zip -r EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" ".vscode/*" "example/*"
           
       - name: Clone Auto Package.json
         run: |
