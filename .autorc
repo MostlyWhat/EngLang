@@ -1,14 +1,9 @@
 {
   "plugins": [
     "git-tag",
+    "all-contributors",
     "conventional-commits",
-    "first-time-contributor",
-    "upload-assets",
-    {
-      "assets": [
-        "./dist/EngLang-Compiler.zip"
-      ]
-    }
+    "first-time-contributor"
   ],
   "owner": "MostlyWhat",
   "repo": "EngLang",
