@@ -267,10 +267,13 @@ def interface():
     setup.info(f"Compiler has written to the file {output_file}")
 
     if setup.input_yes_no("Would you like to run the program?"):
-        os.system(f"python {output_file}")
+        try:
+            os.system(f"python {output_file}")
 
-    else:
-        setup.info("Thank you for using the EngLang Compiler Setup")
+        except Exception as e:
+            setup.error(f"An error occurred while running the program: {e}")
+
+    setup.info("Thank you for using the EngLang Compiler Setup")
 
 
 def no_setup(filename):

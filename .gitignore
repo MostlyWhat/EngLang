@@ -6,3 +6,8 @@ dist
 package.json
 package-lock.json
 __pycache__
+tests
+tools
+
+# Test Files
+read_config.py
