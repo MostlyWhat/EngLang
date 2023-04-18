@@ -1,0 +1,35 @@
+# Configuration for Setup
+[setup]
+
+[setup.information]
+name = "Compiler" # The name of the application
+language = "EngLang" # The language the setup will compile for
+version = "v0.0.1-alpha.1" # The version of the language the setup will compile for
+author = "MostlyWhat Systems" # The author of the setup
+description = "Setup for the EngLang Compiler" # The description of the setup
+build = "April 2023" # The build month and year of the setup
+
+[setup.style]
+# The style of the popups
+info = "blue" # The info string for the setup
+error = "red" # The error string for the setup
+warning = "yellow" # The warning string for the setup
+success = "green" # The success string for the setup
+
+# The style of inputs
+input = "cyan" # The input string for the setup
+yes_no = "yellow" # The yes and no string for the setup
+
+# The style of assets
+banner = "red" # The banner style
+
+[setup.assets]
+# The assets to be included in the setup.
+banner = '''
+         _____             _                      
+        | ____|_ __   __ _| |    __ _ _ __   __ _ 
+        |  _| | '_ \ / _` | |   / _` | '_ \ / _` |
+        | |___| | | | (_| | |__| (_| | | | | (_| |
+        |_____|_| |_|\__, |_____\__,_|_| |_|\__, |
+                     |___/                  |___/ 
+'''

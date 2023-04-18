@@ -5,3 +5,10 @@ node_modules
 dist
 package.json
 package-lock.json
+__pycache__
+tests
+tools
+EngLang-Compiler.zip
+
+# Test Files
+read_config.py

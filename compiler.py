@@ -55,7 +55,7 @@ class EngLangConverter:
         print("[ EngLang Compiler] Getting program name...")
         program_line = code.split("\n")[0]
         program_name = program_line.replace("PROGRAM", "").strip()
-        return program_name if program_name else None
+        return program_name or None
 
     @staticmethod
     def replace_import(code):
@@ -126,7 +126,7 @@ class EngLangConverter:
         print("[ EngLang Compiler ] Converting keywords...")
         code.replace("AND", "and").replace("OR", "or").replace("IN", "in")
         code.replace("NOT", "not").replace("TRUE", "True").replace("FALSE", "False")
-        return
+
 
     @staticmethod
     def convert_set_statements(code):
@@ -279,49 +279,20 @@ class EngLangConverter:
         return code
 
 
+def Compiler(code):
+    converter = EngLangConverter()
+    program_name = converter.get_program_name(code)
+    python_code = converter.convert(code)
+
+    return program_name, python_code
+
+
 def main():
     """
-    This function prompts the user for an EngLang file location, author name, and license name, converts
-    the EngLang code to Python code using EngLangConverter, writes the Python code to a file with
-    metadata, and optionally runs the generated code.
+    This function tells the user to use the setup instead of this as there is no need to run this
     """
-    print("Welcome to MostlyWhat's EngLang Compiler!")
-    file_location = input("Enter the EngLang file location (.enlg): ")
-    author = input("Enter the code author's name: ")
-    file_license = input("Enter the license name: ")
-
-    with open(file_location, "r") as f:
-        englang_code = f.read()
-
-    converter = EngLangConverter()
-    program_name = converter.get_program_name(englang_code)
-    python_code = converter.convert(englang_code)
-
-    output_folder = "./output/"
-    output_filename = f"{program_name.lower()}.py"
-    output_file = os.path.join(output_folder, output_filename)
-
-    compiler_name = "MostlyWhat's EngLang Compiler"
-    language = "EngLang"
-
-    current_date = datetime.now().strftime("%Y-%m-%d")
-    with open(output_file, "w") as f:
-        f.write(
-            f"# Name: {program_name.title()}\n# Author: {author}\n# Language: {language}\n# Compiled: {current_date}\n# Compiler: {compiler_name}\n# License: {file_license}\n\n"
-        )
-        f.write(python_code)
-
-    print(f"\nGenerated Python file: {output_file}")
-
-    run_code = input("\nDo you want to run the generated code? [y/n]: ")
-    if run_code.lower() == "y":
-        os.system(f"python {output_file}")
+    print("Please use the setup.py file to run this program")
 
 
-# `if __name__ == "__main__":` is a common Python idiom that checks whether the current script is
-# being run as the main program or if it is being imported as a module into another program. If the
-# script is being run as the main program, the `main()` function is called, which is the entry point
-# of the program. If the script is being imported as a module, the `main()` function is not called
-# automatically.
 if __name__ == "__main__":
     main()

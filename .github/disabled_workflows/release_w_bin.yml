@@ -1,0 +1,46 @@
+name: Release 
+
+on: [push]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+
+      - name: Install Tools
+        run: |
+          sudo apt-get update && sudo apt-get install -y zip wget
+
+      - name: Zip Everything
+        run: |
+          # .zip the files with exclusion
+          zip -r EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" ".vscode/*" "example/*"
+      - name: Download Latest Release
+        run: |
+          # Download auto-linux.gz
+          wget "https://github.com/intuit/auto/releases/latest/download/auto-linux.gz"
+
+          dir
+
+          # Extract auto-linux.gz
+          gzip -d auto-linux.gz
+
+          dir
+
+          # Rename auto-linux to auto.exe
+          mv "./auto-linux" "./auto"
+
+      - name: Create Release
+        run: |
+          # List Files and Folders
+          dir
+
+          # Create release
+          sudo ./auto shipit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_PAT }}
