@@ -1,0 +1,46 @@
+name: Release 
+
+on: [push]
+
+jobs:
+  release:
+    runs-on: windows-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+
+      - name: Install Tools
+        run: |
+          choco install zip wget -y
+
+      - name: Zip Everything
+        run: |
+          # .zip the files with exclusion
+          zip -r EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" ".vscode/*" "example/*"
+      - name: Download Latest Release
+        run: |
+          # Download auto-win.exe.gz
+          wget "https://github.com/intuit/auto/releases/latest/download/auto-win.exe.gz"
+
+          dir
+
+          # Extract auto-win.exe.gz
+          gzip -d auto-win.exe.gz
+
+          dir
+
+          # Rename auto-win.exe to auto.exe
+          mv "./auto-win.exe" "./auto.exe"
+
+      - name: Create Release
+        run: |
+          # List Files and Folders
+          dir
+
+          # Create release
+          ./auto.exe shipit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_PAT }}

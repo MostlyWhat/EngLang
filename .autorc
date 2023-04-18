@@ -3,7 +3,13 @@
     "git-tag",
     "all-contributors",
     "conventional-commits",
-    "first-time-contributor"
+    "first-time-contributor",
+    [
+      "upload-assets",
+      [
+        "./EngLang-Compiler.zip"
+      ]
+    ]
   ],
   "owner": "MostlyWhat",
   "repo": "EngLang",
