@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
       - uses: actions/checkout@v2
@@ -14,7 +14,7 @@ jobs:
 
       - name: Install Tools
         run: |
-          choco install zip wget -y
+          sudo apt-get update && sudo apt-get install -y zip wget
 
       - name: Zip Everything
         run: |
@@ -22,18 +22,18 @@ jobs:
           zip -r EngLang-Compiler.zip . -x "README.md" "assets/*" ".github/*" ".git/*" ".gitignore" ".autorc" ".vscode/*" "example/*"
       - name: Download Latest Release
         run: |
-          # Download auto-win.exe.gz
-          wget "https://github.com/intuit/auto/releases/latest/download/auto-win.exe.gz"
+          # Download auto-linux.gz
+          wget "https://github.com/intuit/auto/releases/latest/download/auto-linux.gz"
 
           dir
 
-          # Extract auto-win.exe.gz
-          gzip -d auto-win.exe.gz
+          # Extract auto-linux.gz
+          gzip -d auto-linux.gz
 
           dir
 
-          # Rename auto-win.exe to auto.exe
-          mv "./auto-win.exe" "./auto.exe"
+          # Rename auto-linux to auto.exe
+          mv "./auto-linux" "./auto"
 
       - name: Create Release
         run: |
@@ -41,6 +41,6 @@ jobs:
           dir
 
           # Create release
-          ./auto.exe shipit
+          ./auto shipit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_PAT }}
